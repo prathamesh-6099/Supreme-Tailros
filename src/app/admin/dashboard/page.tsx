@@ -1,8 +1,27 @@
-export default function AdminDashboardPage() {
-  return (
-    <main className="page-wrapper">
-      <h1 className="text-xl font-bold text-slate-900">Dashboard</h1>
-      <p className="text-sm text-slate-500 mt-1">Phase 4 — coming soon</p>
-    </main>
-  )
+import { createClient } from '@/lib/supabase/server'
+import DashboardClient from './DashboardClient'
+import type { OrderWithCustomer } from '@/lib/types/database'
+
+export const dynamic = 'force-dynamic'
+
+export const metadata = {
+  title: 'Dashboard — Supreme Tailors',
+}
+
+export default async function DashboardPage() {
+  const supabase = await createClient()
+
+  const { data: orders, error } = await supabase
+    .from('orders')
+    .select(`
+      *,
+      profiles ( name, mobile )
+    `)
+    .order('delivery_date', { ascending: true })
+
+  if (error) {
+    console.error('Dashboard fetch error:', error)
+  }
+
+  return <DashboardClient orders={(orders as OrderWithCustomer[]) ?? []} />
 }
