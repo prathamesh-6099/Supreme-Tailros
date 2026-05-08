@@ -106,7 +106,9 @@ export default function Home() {
       </svg>
 
       {/* ── Main content ── */}
-      <div className="relative z-10 max-w-md mx-auto px-6 min-h-screen flex flex-col items-center justify-center">
+      <div className="relative z-10 max-w-md mx-auto px-6 min-h-screen flex flex-col items-center">
+        {/* Spacer top */}
+        <div className="flex-1" />
         {/* Sewing machine hero */}
         <div className="animate-fade-in-up mb-6">
           <div className="relative">
@@ -165,8 +167,11 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* Spacer bottom */}
+        <div className="flex-1" />
+
         {/* Footer */}
-        <div className="mt-auto pt-12 pb-6 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
+        <div className="pb-6 text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
           <div className="flex items-center justify-center gap-1 text-amber-600/40">
             <ScissorsIcon className="w-3.5 h-3.5" />
             <span className="text-[10px] tracking-widest uppercase">Est. 1995</span>
