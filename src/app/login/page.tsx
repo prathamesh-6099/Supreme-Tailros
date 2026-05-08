@@ -1,0 +1,10 @@
+export default function CustomerLoginPage() {
+  return (
+    <main className="page-wrapper flex items-center justify-center">
+      <div className="card w-full">
+        <h1 className="text-xl font-bold text-slate-900 mb-1">Customer Login</h1>
+        <p className="text-sm text-slate-500">Phase 7 — coming soon</p>
+      </div>
+    </main>
+  )
+}
